@@ -1411,6 +1411,7 @@ GameObject:
   - component: {fileID: 416147842}
   - component: {fileID: 416147841}
   - component: {fileID: 416147846}
+  - component: {fileID: 416147847}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1519,6 +1520,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creator:
     timeframes: []
+    importanceLevels: []
+    categories: []
+  TimeFrameDropdown: {fileID: 1926379288}
+  ImportanceDropdown: {fileID: 477478710}
+  CategoryDropdown: {fileID: 1579130381}
+  isDrawn: 0
+--- !u!114 &416147847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 416147840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ac749e0a896ae43bbf5eddab89aaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIComponents: []
+  ComponentParent: {fileID: 1348903865}
+  StartingY: 0
 --- !u!1 &466301850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,11 +1700,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Option A
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: 
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3012,7 +3029,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option A
+  m_Text: 
 --- !u!222 &1120854808
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4301,11 +4318,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Option A
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: 
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4638,7 +4651,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option A
+  m_Text: 
 --- !u!222 &1656397527
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5427,11 +5440,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Option A
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: 
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5614,7 +5623,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option A
+  m_Text: 
 --- !u!222 &1944828103
 CanvasRenderer:
   m_ObjectHideFlags: 0

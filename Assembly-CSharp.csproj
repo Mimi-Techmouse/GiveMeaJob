@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{43598520-2315-5AC2-078F-6F828EB8C4AF}</ProjectGuid>
+    <ProjectGuid>{89659804-F09A-6EC5-42BD-81E8B3F7C72F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -64,20 +64,21 @@
      <Compile Include="Assets\Scripts\gmat_register.cs" />
      <Compile Include="Assets\Scripts\gmat_rotater.cs" />
      <Compile Include="Assets\Scripts\gmat_startengine.cs" />
+     <Compile Include="Assets\Scripts\gmat_uicontroller.cs" />
      <Compile Include="Assets\Scripts\Utility\SimpleJSON.cs" />
      <Compile Include="Assets\UI Assets\Calendar\scripts\CalendarController.cs" />
      <Compile Include="Assets\UI Assets\Calendar\scripts\CalendarDateItem.cs" />
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>C:/Users/Miriam/Documents/Give Me a Job/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/Miriam/Documents/GiveMeaJob/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/Miriam/Documents/Give Me a Job/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/Miriam/Documents/GiveMeaJob/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/Miriam/Documents/Give Me a Job/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>C:/Users/Miriam/Documents/GiveMeaJob/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/Miriam/Documents/Give Me a Job/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/Miriam/Documents/GiveMeaJob/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/UnityFive/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -257,7 +258,7 @@
  <HintPath>C:/Program Files/UnityFive/Editor/Data/Managed/Unity.Locator.dll</HintPath>
  </Reference>
  <Reference Include="Facebook.Unity.Settings">
- <HintPath>C:/Users/Miriam/Documents/Give Me a Job/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ <HintPath>C:/Users/Miriam/Documents/GiveMeaJob/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/UnityFive/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

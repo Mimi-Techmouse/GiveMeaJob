@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class gmat_classes : MonoBehaviour {
@@ -109,9 +110,34 @@ public class gmat_classes : MonoBehaviour {
 	[System.Serializable]
 	public class TaskCreator {
 
-		public List<TimeFrame> timeframes;
+		public List<SimpleData> timeframes;
+		public List<SimpleData> importanceLevels;
+		public List<SimpleData> categories;
 
 		public TaskCreator() {
+		}
+
+		public bool IsReadyToDraw() {
+			if (timeframes != null && importanceLevels != null) // && categories != null)
+				return true;
+
+			return false;
+		}
+
+		public void DrawTimeFrames(Dropdown element) {
+			List<string> newOptions = new List<string> ();
+			foreach (SimpleData o in timeframes) {
+				newOptions.Add (o.label);
+			}
+			element.AddOptions (newOptions);
+		}
+
+		public void DrawImportanceLevels(Dropdown element) {
+			List<string> newOptions = new List<string> ();
+			foreach (SimpleData o in importanceLevels) {
+				newOptions.Add (o.label);
+			}
+			element.AddOptions (newOptions);
 		}
 
 		public IEnumerator GetTimeFrames() {
@@ -125,11 +151,54 @@ public class gmat_classes : MonoBehaviour {
 					Debug.Log(www.error);
 				}
 				else {
-					timeframes = new List<TimeFrame> ();
+					timeframes = new List<SimpleData> ();
 					SimpleJSON.JSONNode data = SimpleJSON.JSON.Parse(www.downloadHandler.text);
 					foreach (SimpleJSON.JSONNode message in data["times"]) {
-						TimeFrame f = new TimeFrame (message ["frame_id"].AsInt, message ["label"].Value);
+						SimpleData f = new SimpleData (message ["frame_id"].AsInt, message ["label"].Value);
 						timeframes.Add (f);
+					}
+				}
+			}
+		}
+
+		public IEnumerator GetImportanceLevels() {
+			WWWForm form = new WWWForm();
+
+			using (UnityWebRequest www = UnityWebRequest.Post(BaseURL+"?action=get_importance_levels", form))
+			{
+				yield return www.SendWebRequest();
+
+				if (www.isNetworkError || www.isHttpError) {
+					Debug.Log(www.error);
+				}
+				else {
+					importanceLevels = new List<SimpleData> ();
+					SimpleJSON.JSONNode data = SimpleJSON.JSON.Parse(www.downloadHandler.text);
+					foreach (SimpleJSON.JSONNode message in data["importances"]) {
+						SimpleData f = new SimpleData (message ["importance_id"].AsInt, message ["label"].Value);
+						importanceLevels.Add (f);
+					}
+				}
+			}
+		}
+
+		public IEnumerator GetCategories(int id) {
+			WWWForm form = new WWWForm();
+			form.AddField("user_id", id);
+
+			using (UnityWebRequest www = UnityWebRequest.Post(BaseURL+"?action=get_categories", form))
+			{
+				yield return www.SendWebRequest();
+
+				if (www.isNetworkError || www.isHttpError) {
+					Debug.Log(www.error);
+				}
+				else {
+					categories = new List<SimpleData> ();
+					SimpleJSON.JSONNode data = SimpleJSON.JSON.Parse(www.downloadHandler.text);
+					foreach (SimpleJSON.JSONNode message in data["categories"]) {
+						SimpleData f = new SimpleData (message ["category_id"].AsInt, message ["label"].Value, message ["description"].Value);
+						categories.Add (f);
 					}
 				}
 			}
@@ -137,13 +206,21 @@ public class gmat_classes : MonoBehaviour {
 	}
 
 	[System.Serializable]
-	public class TimeFrame {
-		public int frame_id = -1;
+	public class SimpleData {
+		public int id = -1;
 		public string label = "";
+		public string description = "";
 
-		public TimeFrame(int i, string l) {
-			frame_id = i;
+		public SimpleData(int i, string l) {
+			id = i;
 			label = l;
+			description = "";
+		}
+
+		public SimpleData(int i, string l, string d) {
+			id = i;
+			label = l;
+			description = d;
 		}
 	}
 }
