@@ -57,8 +57,10 @@
      <Compile Include="Assets\Scripts\gmat_createjob.cs" />
      <Compile Include="Assets\Scripts\gmat_encryption.cs" />
      <Compile Include="Assets\Scripts\gmat_engine.cs" />
+     <Compile Include="Assets\Scripts\gmat_enums.cs" />
      <Compile Include="Assets\Scripts\gmat_fader.cs" />
      <Compile Include="Assets\Scripts\gmat_givejob.cs" />
+     <Compile Include="Assets\Scripts\gmat_layouthelper.cs" />
      <Compile Include="Assets\Scripts\gmat_loadingscreen.cs" />
      <Compile Include="Assets\Scripts\gmat_login.cs" />
      <Compile Include="Assets\Scripts\gmat_register.cs" />

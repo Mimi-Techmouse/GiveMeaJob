@@ -24,14 +24,33 @@ public class gmat_uicontroller : MonoBehaviour {
 		float currentY = StartingY;
 		float buffer = 5;
 		foreach (RectTransform child in UIComponents) {
-			Debug.Log (child.name + ", " + child.sizeDelta);
 			if (child.gameObject.activeSelf) {
-				float halfHeight = (child.sizeDelta.y / 2);
+				float halfHeight = (child.sizeDelta.y / 2); 
 				currentY -= halfHeight;
 				child.localPosition = new Vector3 (child.localPosition.x, currentY, child.localPosition.z);
 				child.ForceUpdateRectTransforms ();
 				currentY -= (halfHeight+buffer);
 			}
 		}
+	}
+
+	public virtual void UpdateLayoutFromTimeframe(gmat_enums.TIMEFRAME frame) {
+		Debug.Log ("frame: " + frame);
+		foreach (RectTransform child in UIComponents) {
+			gmat_layouthelper helper = child.gameObject.GetComponent<gmat_layouthelper> ();
+			if (helper != null) {
+				if (helper.GetIsInLayout (frame)) {
+					Debug.Log (helper.name + " is in layout");
+					helper.gameObject.SetActive (true);
+				} else {
+					Debug.Log (helper.name + " is not in layout");
+					helper.gameObject.SetActive (false);
+				}
+			} else {
+				Debug.Log (child.name + " does not have a layout");
+			}
+		}
+
+		RedrawComponents ();
 	}
 }

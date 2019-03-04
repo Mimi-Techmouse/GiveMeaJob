@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class gmat_createjob : MonoBehaviour {
 
+	public string taskName;
+	public string taskDescription;
+	public gmat_enums.TIMEFRAME taskFrame;
+	public string taskStart;
+	public string taskEnd;
+	public int taskCategory;
+	public int taskImportance;
+
 	public gmat_classes.TaskCreator creator;
 	public Dropdown TimeFrameDropdown;
 	public Dropdown ImportanceDropdown;
@@ -18,6 +26,16 @@ public class gmat_createjob : MonoBehaviour {
 				m_Engine = FindObjectOfType<gmat_engine> ();
 			}
 			return m_Engine;
+		}
+	}
+
+	protected gmat_uicontroller m_Control = null;
+	public gmat_uicontroller Controller {
+		get {
+			if (m_Control == null) {
+				m_Control = GetComponent<gmat_uicontroller> ();
+			}
+			return m_Control;
 		}
 	}
 
@@ -36,7 +54,25 @@ public class gmat_createjob : MonoBehaviour {
 			Debug.Log ("we're gonna draw!");
 			creator.DrawTimeFrames (TimeFrameDropdown);
 			creator.DrawImportanceLevels (ImportanceDropdown);
+			Controller.UpdateLayoutFromTimeframe (gmat_enums.TIMEFRAME.NONE);
 			isDrawn = true;
+		}
+	}
+
+	public virtual void SetName(InputField field) {
+		taskName = field.text;
+	}
+
+	public virtual void SetDescription(InputField field) {
+		taskDescription = field.text;
+	}
+
+	public virtual void SetTimeFrame(Dropdown field) {
+		gmat_enums.TIMEFRAME n = (gmat_enums.TIMEFRAME)creator.timeframes[field.value].id;
+		taskFrame = n;
+
+		if (Controller != null) {
+			Controller.UpdateLayoutFromTimeframe (taskFrame);
 		}
 	}
 }
